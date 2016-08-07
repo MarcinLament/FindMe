@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		202F01871D55F5BD00B65FC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F01861D55F5BD00B65FC8 /* AppDelegate.swift */; };
-		202F01891D55F5BD00B65FC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F01881D55F5BD00B65FC8 /* ViewController.swift */; };
+		202F01891D55F5BD00B65FC8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F01881D55F5BD00B65FC8 /* LoginViewController.swift */; };
 		202F018C1D55F5BD00B65FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202F018A1D55F5BD00B65FC8 /* Main.storyboard */; };
 		202F018E1D55F5BD00B65FC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 202F018D1D55F5BD00B65FC8 /* Assets.xcassets */; };
 		202F01911D55F5BD00B65FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202F018F1D55F5BD00B65FC8 /* LaunchScreen.storyboard */; };
+		20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A481D55FC9600309A02 /* RegisterViewController.swift */; };
+		20844A4B1D5620B200309A02 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A4A1D5620B200309A02 /* UIViewController.swift */; };
+		20844A4D1D5630CE00309A02 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A4C1D5630CE00309A02 /* MapViewController.swift */; };
+		20844A4F1D56313200309A02 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20844A4E1D56313200309A02 /* MapKit.framework */; };
+		20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A501D57B94B00309A02 /* ProfileViewController.swift */; };
+		20844A531D57BFEE00309A02 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A521D57BFEE00309A02 /* FriendsViewController.swift */; };
+		A7C989789878CED328A68DE8 /* Pods_FindMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEE6C0FFE74D2BD6221039A /* Pods_FindMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		202F01831D55F5BD00B65FC8 /* FindMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		202F01861D55F5BD00B65FC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		202F01881D55F5BD00B65FC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		202F01881D55F5BD00B65FC8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		202F018B1D55F5BD00B65FC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		202F018D1D55F5BD00B65FC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		202F01901D55F5BD00B65FC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		202F01921D55F5BD00B65FC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20844A481D55FC9600309A02 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		20844A4A1D5620B200309A02 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		20844A4C1D5630CE00309A02 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		20844A4E1D56313200309A02 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		20844A501D57B94B00309A02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		20844A521D57BFEE00309A02 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		47C9BA86EF141FA23D457538 /* Pods-FindMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindMe/Pods-FindMe.release.xcconfig"; sourceTree = "<group>"; };
+		94749C93F48454687298BA1B /* Pods-FindMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindMe/Pods-FindMe.debug.xcconfig"; sourceTree = "<group>"; };
+		AAEE6C0FFE74D2BD6221039A /* Pods_FindMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +45,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20844A4F1D56313200309A02 /* MapKit.framework in Frameworks */,
+				A7C989789878CED328A68DE8 /* Pods_FindMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EC4894AB59ED4186C303561 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20844A4E1D56313200309A02 /* MapKit.framework */,
+				AAEE6C0FFE74D2BD6221039A /* Pods_FindMe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		202F017A1D55F5BD00B65FC8 = {
 			isa = PBXGroup;
 			children = (
 				202F01851D55F5BD00B65FC8 /* FindMe */,
 				202F01841D55F5BD00B65FC8 /* Products */,
+				7CC51B0109731E9E4A8922A8 /* Pods */,
+				0EC4894AB59ED4186C303561 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +83,28 @@
 		202F01851D55F5BD00B65FC8 /* FindMe */ = {
 			isa = PBXGroup;
 			children = (
+				20844A4A1D5620B200309A02 /* UIViewController.swift */,
 				202F01861D55F5BD00B65FC8 /* AppDelegate.swift */,
-				202F01881D55F5BD00B65FC8 /* ViewController.swift */,
+				202F01881D55F5BD00B65FC8 /* LoginViewController.swift */,
 				202F018A1D55F5BD00B65FC8 /* Main.storyboard */,
+				20844A481D55FC9600309A02 /* RegisterViewController.swift */,
 				202F018D1D55F5BD00B65FC8 /* Assets.xcassets */,
 				202F018F1D55F5BD00B65FC8 /* LaunchScreen.storyboard */,
 				202F01921D55F5BD00B65FC8 /* Info.plist */,
+				20844A4C1D5630CE00309A02 /* MapViewController.swift */,
+				20844A501D57B94B00309A02 /* ProfileViewController.swift */,
+				20844A521D57BFEE00309A02 /* FriendsViewController.swift */,
 			);
 			path = FindMe;
+			sourceTree = "<group>";
+		};
+		7CC51B0109731E9E4A8922A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94749C93F48454687298BA1B /* Pods-FindMe.debug.xcconfig */,
+				47C9BA86EF141FA23D457538 /* Pods-FindMe.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 202F01951D55F5BD00B65FC8 /* Build configuration list for PBXNativeTarget "FindMe" */;
 			buildPhases = (
+				1E3CFE684702E4ABAD939672 /* [CP] Check Pods Manifest.lock */,
 				202F017F1D55F5BD00B65FC8 /* Sources */,
 				202F01801D55F5BD00B65FC8 /* Frameworks */,
 				202F01811D55F5BD00B65FC8 /* Resources */,
+				39B52B176B6549DBCA52B4D7 /* [CP] Embed Pods Frameworks */,
+				786BB3FFDBED8DB3E3CF3CDA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,12 +176,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1E3CFE684702E4ABAD939672 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		39B52B176B6549DBCA52B4D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FindMe/Pods-FindMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		786BB3FFDBED8DB3E3CF3CDA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FindMe/Pods-FindMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		202F017F1D55F5BD00B65FC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				202F01891D55F5BD00B65FC8 /* ViewController.swift in Sources */,
+				20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */,
+				20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */,
+				202F01891D55F5BD00B65FC8 /* LoginViewController.swift in Sources */,
+				20844A4B1D5620B200309A02 /* UIViewController.swift in Sources */,
+				20844A531D57BFEE00309A02 /* FriendsViewController.swift in Sources */,
+				20844A4D1D5630CE00309A02 /* MapViewController.swift in Sources */,
 				202F01871D55F5BD00B65FC8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,23 +348,27 @@
 		};
 		202F01961D55F5BD00B65FC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94749C93F48454687298BA1B /* Pods-FindMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FindMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.FindMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		202F01971D55F5BD00B65FC8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47C9BA86EF141FA23D457538 /* Pods-FindMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FindMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.FindMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -288,6 +391,7 @@
 				202F01971D55F5BD00B65FC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
