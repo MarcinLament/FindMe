@@ -21,8 +21,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         if(CLLocationManager.locationServicesEnabled()){
             print("enabled")
             
-            
-            
             locationManager = CLLocationManager()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -39,6 +37,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.startUpdatingHeading()
         }else{
             print("disabled")
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if(status == .AuthorizedWhenInUse || status == .AuthorizedAlways){
+            locationManager.startUpdatingLocation()
+            locationManager.startUpdatingHeading()
         }
     }
     
