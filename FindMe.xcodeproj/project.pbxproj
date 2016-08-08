@@ -18,7 +18,7 @@
 		20844A4F1D56313200309A02 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20844A4E1D56313200309A02 /* MapKit.framework */; };
 		20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A501D57B94B00309A02 /* ProfileViewController.swift */; };
 		20844A531D57BFEE00309A02 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A521D57BFEE00309A02 /* FriendsViewController.swift */; };
-		A7C989789878CED328A68DE8 /* Pods_FindMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEE6C0FFE74D2BD6221039A /* Pods_FindMe.framework */; };
+		A0B70CC6012E91D2183421CB /* Pods_FindMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604108AA1AB2CDA6E01878E6 /* Pods_FindMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		20844A501D57B94B00309A02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		20844A521D57BFEE00309A02 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		47C9BA86EF141FA23D457538 /* Pods-FindMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindMe/Pods-FindMe.release.xcconfig"; sourceTree = "<group>"; };
+		604108AA1AB2CDA6E01878E6 /* Pods_FindMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94749C93F48454687298BA1B /* Pods-FindMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindMe/Pods-FindMe.debug.xcconfig"; sourceTree = "<group>"; };
-		AAEE6C0FFE74D2BD6221039A /* Pods_FindMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20844A4F1D56313200309A02 /* MapKit.framework in Frameworks */,
-				A7C989789878CED328A68DE8 /* Pods_FindMe.framework in Frameworks */,
+				A0B70CC6012E91D2183421CB /* Pods_FindMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				20844A4E1D56313200309A02 /* MapKit.framework */,
-				AAEE6C0FFE74D2BD6221039A /* Pods_FindMe.framework */,
+				604108AA1AB2CDA6E01878E6 /* Pods_FindMe.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

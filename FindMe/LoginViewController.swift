@@ -23,21 +23,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if PFUser.currentUser() != nil {
-            print("User logged in, moving on...")
+//        if PFUser.currentUser() != nil {
+//            print("User logged in, moving on...")
             openMapViewController()
             return
-        }
-        print("User not logged in")
-        
-        usernameView.hidden = false
-        passwordView.hidden = false
-        loginButton.hidden = false
-        registerButton.hidden = false
-        
-        usernameView.delegate = self
-        passwordView.delegate = self
-        checkLoginButtonState()
+//        }
+//        print("User not logged in")
+//        
+//        usernameView.hidden = false
+//        passwordView.hidden = false
+//        loginButton.hidden = false
+//        registerButton.hidden = false
+//        
+//        usernameView.delegate = self
+//        passwordView.delegate = self
+//        checkLoginButtonState()
     }
 
     @IBAction func login(sender: AnyObject) {
