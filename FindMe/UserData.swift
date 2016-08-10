@@ -29,6 +29,10 @@ class UserData{
             newFriendRequest.authorName = friendRequest["authorName"]! as? String
             newFriendRequest.recipientEmail = friendRequest["recipientEmail"]! as? String
             newFriendRequest.status = friendRequest["status"]! as? String
+            
+            let authorProfile = friendRequest["authorProfile"]
+            
+            newFriendRequest.authorProfileId = authorProfile!!["objectId"]! as? String
             friendRequestList.append(newFriendRequest)
         }
         
@@ -37,7 +41,7 @@ class UserData{
             let newSentInvite: FriendRequest = FriendRequest()
             newSentInvite.objectId = invite["objectId"]! as? String
             newSentInvite.authorName = invite["authorName"]! as? String
-            newSentInvite.recipientEmail = invite["recipientEmail"]! as? String
+            newSentInvite.recipientEmail = invite["recipient_email"]! as? String
             newSentInvite.status = invite["status"]! as? String
             sentInvitesList.append(newSentInvite)
         }
@@ -52,6 +56,7 @@ class UserProfile{
 class FriendRequest{
     var objectId: String?
     var authorName: String?
+    var authorProfileId: String?
     var recipientEmail: String?
     var status: String?
 }

@@ -46,11 +46,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         registerNewUser()
     }
     
-    func isValidEmail(text: String) -> Bool{
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(text)
-    }
+    
     
     func isInvalidText(text: String) -> Bool{
         return text.characters.count > 45
@@ -61,6 +57,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         //create unique user profile
         let userProfile = PFObject(className: "UserProfile")
         userProfile["display_name"] = displayNameView.text
+        userProfile["email"] = emailView.text
         
         //create new user
         var user = PFUser()
@@ -69,13 +66,36 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         user.email = emailView.text
         user["user_profile"] = userProfile
         
+        //userProfile["user"] = user
+        
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             if let error = error {
                 let errorString = error.userInfo["error"] as? String
                 self.showAlert("Cannot register", message: errorString!, completion: nil)
-            } else {
+            } else if(!succeeded){
+                self.showAlert("Cannot register", message: "Internal server error", completion: nil)
+                
+            }else{
+            
                 //login newly created user
+                PFUser.logInWithUsernameInBackground(self.usernameView.text!, password: self.passwordView.text!) { (user, error) -> Void in
+                    if error != nil {
+                        self.showAlert("Error", message: error!.localizedDescription, completion: nil)
+                    } else {
+                        PFCloud.callFunctionInBackground("verifyNewUser", withParameters: nil) {
+                            (response: AnyObject?, error: NSError?) -> Void in
+                            print(response)
+                            
+                            //open map screen
+                            self.performSegueWithIdentifier("OpenUserAreaSegue", sender: nil)
+                        }
+                    }
+                }
+                
+                
+                
+                
             }
         }
     }

@@ -16,4 +16,17 @@ extension UIViewController{
         ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: completion))
         presentViewController(ac, animated: true, completion: nil)
     }
+    
+    public func showAlert(title: String, message: String, positiveButtonText: String, negativeButtonText:String, positiveCompletion: ((UIAlertAction) -> Void)?, negativeCompletion: ((UIAlertAction) -> Void)?){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: positiveButtonText, style: .Default, handler: positiveCompletion))
+        ac.addAction(UIAlertAction(title: negativeButtonText, style: .Default, handler: negativeCompletion))
+        presentViewController(ac, animated: true, completion: nil)
+    }
+    
+    func isValidEmail(text: String) -> Bool{
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(text)
+    }
 }
