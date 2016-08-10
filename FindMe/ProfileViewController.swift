@@ -15,11 +15,11 @@ class ProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         
-        let userProfile = PFUser.currentUser()!["user_profile"] as! PFObject
+        let userProfile = PFUser.currentUser()!["userProfile"] as! PFObject
         
         userProfile.fetchIfNeededInBackgroundWithBlock {
             (userProfile: PFObject?, error: NSError?) -> Void in
-            self.userDisplayNameView.text = "Hello, " + (userProfile!["display_name"] as! String)
+            self.userDisplayNameView.text = "Hello, " + (userProfile!["displayName"] as! String)
         }
 
     }

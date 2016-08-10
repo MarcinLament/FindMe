@@ -56,7 +56,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func registerNewUser(){
         //create unique user profile
         let userProfile = PFObject(className: "UserProfile")
-        userProfile["display_name"] = displayNameView.text
+        userProfile["displayName"] = displayNameView.text
         userProfile["email"] = emailView.text
         
         //create new user
@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         user.username = usernameView.text
         user.password = passwordView.text
         user.email = emailView.text
-        user["user_profile"] = userProfile
+        user["userProfile"] = userProfile
         
         //userProfile["user"] = user
         

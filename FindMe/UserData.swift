@@ -18,7 +18,7 @@ class UserData{
         for friend in friends{
             let newUserProfile: UserProfile = UserProfile()
             newUserProfile.objectId = friend["objectId"]! as? String
-            newUserProfile.displayName = friend["display_name"]! as? String
+            newUserProfile.displayName = friend["displayName"]! as? String
             friendsList.append(newUserProfile)
         }
         
@@ -41,16 +41,50 @@ class UserData{
             let newSentInvite: FriendRequest = FriendRequest()
             newSentInvite.objectId = invite["objectId"]! as? String
             newSentInvite.authorName = invite["authorName"]! as? String
-            newSentInvite.recipientEmail = invite["recipient_email"]! as? String
+            newSentInvite.recipientEmail = invite["recipientEmail"]! as? String
             newSentInvite.status = invite["status"]! as? String
             sentInvitesList.append(newSentInvite)
         }
     }
 }
 
+class FriendLocationData{
+    
+    var friendLocationList: [UserProfile] = [UserProfile]()
+    
+    init(jsonObject: AnyObject){
+        let friendProfiles = jsonObject["friendProfiles"]! as! [AnyObject]
+        for profile in friendProfiles{
+            
+            let newUserProfile: UserProfile = UserProfile()
+            newUserProfile.objectId = profile["objectId"]! as? String
+            newUserProfile.displayName = profile["displayName"]! as? String
+            
+            let profileLocation = profile["userLocation"]
+            if(profileLocation != nil){
+                let location = profileLocation!!["location"]
+                if(location != nil){
+                    let userLocation: UserLocation = UserLocation()
+                    userLocation.latitude = location!!["latitude"] as? Double
+                    userLocation.longitude = location!!["longitude"] as? Double
+                    newUserProfile.userLocation = userLocation
+                }
+            }
+            
+            friendLocationList.append(newUserProfile)
+        }
+    }
+}
+
+class UserLocation{
+    var latitude: Double?
+    var longitude: Double?
+}
+
 class UserProfile{
     var objectId: String?
     var displayName: String?
+    var userLocation: UserLocation?
 }
 
 class FriendRequest{

@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--LoginViewController-->
@@ -21,7 +22,7 @@
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HR1-fV-Lra">
                                 <rect key="frame" x="220" y="258" width="160" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anm-k2-TAZ">
                                 <rect key="frame" x="255" y="296" width="90" height="30"/>
@@ -40,7 +41,7 @@
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="apq-YB-laE">
                                 <rect key="frame" x="220" y="220" width="160" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -194,24 +195,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evY-PP-eWD">
-                                <rect key="frame" x="0.0" y="555" width="600" height="45"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eeY-qd-b5a">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sb0-C8-95E">
+                                <rect key="frame" x="0.0" y="529" width="301" height="71"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Dym-u0-xA0">
+                                        <rect key="frame" x="140" y="26" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0d-gi-FBB">
+                                        <rect key="frame" x="8" y="8" width="285" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Currently on the map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHI-6W-OPd">
+                                        <rect key="frame" x="8" y="37" width="285" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Dym-u0-xA0" firstAttribute="centerY" secondItem="Sb0-C8-95E" secondAttribute="centerY" id="89x-uN-Tm5"/>
+                                    <constraint firstAttribute="trailing" secondItem="OHI-6W-OPd" secondAttribute="trailing" constant="8" id="Iop-Nj-Lws"/>
+                                    <constraint firstItem="U0d-gi-FBB" firstAttribute="leading" secondItem="Sb0-C8-95E" secondAttribute="leading" constant="8" id="Nb3-NR-xYa"/>
+                                    <constraint firstItem="OHI-6W-OPd" firstAttribute="leading" secondItem="Sb0-C8-95E" secondAttribute="leading" constant="8" id="WpA-zg-iVm"/>
+                                    <constraint firstItem="OHI-6W-OPd" firstAttribute="top" secondItem="U0d-gi-FBB" secondAttribute="bottom" constant="-9" id="Yzj-ME-Uwt"/>
+                                    <constraint firstItem="U0d-gi-FBB" firstAttribute="top" secondItem="Sb0-C8-95E" secondAttribute="top" constant="8" id="nVj-S4-csV"/>
+                                    <constraint firstItem="Dym-u0-xA0" firstAttribute="centerX" secondItem="Sb0-C8-95E" secondAttribute="centerX" id="qh7-Nb-kCe"/>
+                                    <constraint firstAttribute="trailing" secondItem="U0d-gi-FBB" secondAttribute="trailing" constant="8" id="zic-iH-mAO"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evY-PP-eWD">
+                                <rect key="frame" x="300" y="529" width="300" height="71"/>
                                 <color key="backgroundColor" red="0.86730769230000004" green="0.86730769230000004" blue="0.86730769230000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Share my location"/>
+                                <connections>
+                                    <action selector="shareLocation:" destination="FTH-ZW-bYl" eventType="touchUpInside" id="5xy-Si-icg"/>
+                                </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eeY-qd-b5a">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="evY-PP-eWD" firstAttribute="width" secondItem="NiV-66-GKU" secondAttribute="width" multiplier="1:2" id="0fG-qG-U09"/>
+                            <constraint firstItem="Sb0-C8-95E" firstAttribute="leading" secondItem="NiV-66-GKU" secondAttribute="leadingMargin" constant="-20" id="AHJ-Nu-rT4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="evY-PP-eWD" secondAttribute="trailing" constant="-20" id="EIX-Vg-tdZ"/>
                             <constraint firstItem="Dls-i4-Nlf" firstAttribute="top" secondItem="evY-PP-eWD" secondAttribute="bottom" id="Gom-eW-zjW"/>
+                            <constraint firstItem="Dls-i4-Nlf" firstAttribute="top" secondItem="Sb0-C8-95E" secondAttribute="bottom" id="LRN-g6-pUO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eeY-qd-b5a" secondAttribute="trailing" constant="-20" id="V3P-Zz-xm6"/>
-                            <constraint firstItem="evY-PP-eWD" firstAttribute="leading" secondItem="NiV-66-GKU" secondAttribute="leadingMargin" constant="-20" id="Xzt-Xq-Ul2"/>
                             <constraint firstItem="eeY-qd-b5a" firstAttribute="leading" secondItem="NiV-66-GKU" secondAttribute="leadingMargin" constant="-20" id="bGu-nx-A5K"/>
-                            <constraint firstItem="evY-PP-eWD" firstAttribute="top" secondItem="eeY-qd-b5a" secondAttribute="bottom" id="fk8-qa-gGL"/>
+                            <constraint firstItem="Dls-i4-Nlf" firstAttribute="top" secondItem="eeY-qd-b5a" secondAttribute="bottom" constant="70" id="dvc-6E-q4j"/>
+                            <constraint firstItem="evY-PP-eWD" firstAttribute="top" secondItem="eeY-qd-b5a" secondAttribute="bottom" constant="-1" id="e1c-EV-fxn"/>
                             <constraint firstItem="eeY-qd-b5a" firstAttribute="top" secondItem="NiV-66-GKU" secondAttribute="topMargin" id="o5H-Ku-FJv"/>
+                            <constraint firstItem="Sb0-C8-95E" firstAttribute="width" secondItem="NiV-66-GKU" secondAttribute="width" multiplier="1:2" id="uqy-QS-7ss"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ss0-rY-0PE">
@@ -227,6 +266,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="friendInfoActivityView" destination="Dym-u0-xA0" id="nZS-Vc-dB2"/>
+                        <outlet property="friendInfoSummaryView" destination="OHI-6W-OPd" id="0Yt-Iu-ZjO"/>
+                        <outlet property="friendInfoTitleView" destination="U0d-gi-FBB" id="wIA-o9-qMb"/>
                         <outlet property="mapView" destination="eeY-qd-b5a" id="c5v-UC-wt2"/>
                     </connections>
                 </viewController>
@@ -361,6 +403,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VJm-Qv-TqS"/>
+        <segue reference="Uqy-Sv-IoL"/>
     </inferredMetricsTieBreakers>
 </document>
