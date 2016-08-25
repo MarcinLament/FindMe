@@ -17,8 +17,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var friendInfoTitleView: UILabel!
     @IBOutlet weak var friendInfoSummaryView: UILabel!
     @IBOutlet weak var friendInfoActivityView: UIActivityIndicatorView!
+    @IBOutlet weak var shareLocationButton: UIButton!
+    @IBOutlet weak var shareLocationActivityView: UIActivityIndicatorView!
     
+    var userCurrentLocation: CLLocation?
     var locationManager: CLLocationManager!
+
+    var friendsList: [PFObject]?
     
     override func viewDidLoad() {
         
@@ -37,6 +42,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
                 locationManager.requestAlwaysAuthorization()
                 locationManager.requestWhenInUseAuthorization()
             }
+            
             locationManager.startUpdatingLocation()
             locationManager.startUpdatingHeading()
         }else{
@@ -45,23 +51,84 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     override func viewWillAppear(animated: Bool) {
-        fetchFriendsLocation();
+        fetchFriendsLocation()
     }
     
     @IBAction func shareLocation(sender: AnyObject) {
-        //51.5074° N, 0.1278° W
-        let params: [NSObject : NSObject] = ["latitude": 51.5074,
-                                             "longitude":0.1278,
-                                             "recipients":["dmPgREiRiY","8Hnnz3eAUH"]]
         
-        PFCloud.callFunctionInBackground("shareLocation", withParameters: params) {
-            (response: AnyObject?, error: NSError?) -> Void in
+        //check if user has granted location access
+        let status = CLLocationManager.authorizationStatus()
+        if(status == .NotDetermined || status == .Denied){
+            showAlert("Requesting user location", message: "Allow access to your location to share it with your friends", positiveButtonText: "Settings", negativeButtonText: "Cancel", positiveCompletion: { (UIAlertAction) in
+                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                }, negativeCompletion: nil)
+            
+            return
+        }else if(userCurrentLocation == nil){
+            showAlert("Error", message: "Cannot retrieve current location. Please try again shortly.", completion: {(UIAlertAction) in
+                //request user position
+                self.locationManager.requestAlwaysAuthorization()
+                self.locationManager.requestWhenInUseAuthorization()
+            })
+            return
+        }
+        
+        //get friends list
+        shareLocationActivityView.startAnimating()
+        shareLocationButton.hidden = true
+        
+        let userProfile = PFUser.currentUser()!["userProfile"] as! PFObject
+        userProfile.fetchIfNeededInBackgroundWithBlock {
+            (userProfile: PFObject?, error: NSError?) -> Void in
             
             if(error != nil){
-                print(error)
+                print(error?.localizedDescription)
+                self.shareLocationActivityView.stopAnimating()
+                self.shareLocationButton.hidden = false
+                return
             }
             
-            print(response)
+            let relation = userProfile!.relationForKey("friends")
+            relation.query().findObjectsInBackgroundWithBlock {
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else{
+                    print(objects![0]["displayName"])
+                    self.friendsList = objects
+                    
+                    self.performSegueWithIdentifier("OpenSelectFriendsSegue", sender: nil)
+                }
+                self.shareLocationActivityView.stopAnimating()
+                self.shareLocationButton.hidden = false
+            }
+        }
+        
+        
+        
+        //        let params: [NSObject : NSObject] = ["latitude": 51.5074,
+        //                                             "longitude":0.1278,
+        //                                             "recipients":["dmPgREiRiY","8Hnnz3eAUH"]]
+        //
+        //        PFCloud.callFunctionInBackground("shareLocation", withParameters: params) {
+        //            (response: AnyObject?, error: NSError?) -> Void in
+        //
+        //            if(error != nil){
+        //                print(error)
+        //            }
+        //
+        //            print(response)
+        //        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+        if segue!.identifier == "OpenSelectFriendsSegue" {
+            let viewController:SelectFriendsViewController = segue!.destinationViewController as! SelectFriendsViewController
+            viewController.friendsList = friendsList
+            
+//            let indexPath = self.tableView.indexPathForSelectedRow()
+//            viewController.pinCode = self.exams[indexPath.row]
+            
         }
     }
     
@@ -74,6 +141,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             
             if(error != nil){
                 print(error)
+                return;
             }
             
             var friendLocationData: FriendLocationData?
@@ -114,9 +182,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
+        userCurrentLocation = locations.last
         
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let center = CLLocationCoordinate2D(latitude: userCurrentLocation!.coordinate.latitude, longitude: userCurrentLocation!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         self.mapView.setRegion(region, animated: true)

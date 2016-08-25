@@ -19,6 +19,7 @@
 		20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A501D57B94B00309A02 /* ProfileViewController.swift */; };
 		20DFA1051D592CC7009C1357 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1041D592CC7009C1357 /* UserData.swift */; };
 		20DFA1071D592CE9009C1357 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1061D592CE9009C1357 /* FriendListViewController.swift */; };
+		20DFA1091D6F954F009C1357 /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */; };
 		A0B70CC6012E91D2183421CB /* Pods_FindMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604108AA1AB2CDA6E01878E6 /* Pods_FindMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		20844A501D57B94B00309A02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		20DFA1041D592CC7009C1357 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		20DFA1061D592CE9009C1357 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFriendsViewController.swift; sourceTree = "<group>"; };
 		47C9BA86EF141FA23D457538 /* Pods-FindMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindMe/Pods-FindMe.release.xcconfig"; sourceTree = "<group>"; };
 		604108AA1AB2CDA6E01878E6 /* Pods_FindMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94749C93F48454687298BA1B /* Pods-FindMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindMe/Pods-FindMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				202F018F1D55F5BD00B65FC8 /* LaunchScreen.storyboard */,
 				202F01921D55F5BD00B65FC8 /* Info.plist */,
 				20844A4C1D5630CE00309A02 /* MapViewController.swift */,
+				20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */,
 				20844A501D57B94B00309A02 /* ProfileViewController.swift */,
 				20DFA1061D592CE9009C1357 /* FriendListViewController.swift */,
 			);
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */,
+				20DFA1091D6F954F009C1357 /* SelectFriendsViewController.swift in Sources */,
 				20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */,
 				20DFA1051D592CC7009C1357 /* UserData.swift in Sources */,
 				202F01891D55F5BD00B65FC8 /* LoginViewController.swift in Sources */,

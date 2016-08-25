@@ -19,8 +19,8 @@ extension UIViewController{
     
     public func showAlert(title: String, message: String, positiveButtonText: String, negativeButtonText:String, positiveCompletion: ((UIAlertAction) -> Void)?, negativeCompletion: ((UIAlertAction) -> Void)?){
         let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: positiveButtonText, style: .Default, handler: positiveCompletion))
         ac.addAction(UIAlertAction(title: negativeButtonText, style: .Default, handler: negativeCompletion))
+        ac.addAction(UIAlertAction(title: positiveButtonText, style: .Default, handler: positiveCompletion))
         presentViewController(ac, animated: true, completion: nil)
     }
     

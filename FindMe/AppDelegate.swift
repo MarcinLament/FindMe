@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize Parse.
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "APPLICATION_ID"
-            $0.server = "http://localhost:1337/parse"
+            $0.applicationId = "your_application_id"
+            $0.server = "https://mlse.uk/parse"
         }
         Parse.initializeWithConfiguration(configuration)
         

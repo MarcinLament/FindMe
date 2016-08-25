@@ -35,7 +35,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
             print(response)
             
             if(error != nil){
-                print("ERRORR!!!!")
+                print("ERRORR!!!!, " + (error?.localizedDescription)! as String)
             }else{
                 if let data = response!.dataUsingEncoding(NSUTF8StringEncoding) {
                     do {

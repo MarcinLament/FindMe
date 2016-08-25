@@ -229,26 +229,43 @@
                                     <constraint firstAttribute="trailing" secondItem="U0d-gi-FBB" secondAttribute="trailing" constant="8" id="zic-iH-mAO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evY-PP-eWD">
-                                <rect key="frame" x="300" y="529" width="300" height="71"/>
-                                <color key="backgroundColor" red="0.86730769230000004" green="0.86730769230000004" blue="0.86730769230000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Share my location"/>
-                                <connections>
-                                    <action selector="shareLocation:" destination="FTH-ZW-bYl" eventType="touchUpInside" id="5xy-Si-icg"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLC-Kz-5DP">
+                                <rect key="frame" x="301" y="529" width="299" height="71"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evY-PP-eWD">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="71"/>
+                                        <color key="backgroundColor" red="0.86730769230000004" green="0.86730769230000004" blue="0.86730769230000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Share my location"/>
+                                        <connections>
+                                            <action selector="shareLocation:" destination="FTH-ZW-bYl" eventType="touchUpInside" id="5xy-Si-icg"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="X4F-WN-NiE">
+                                        <rect key="frame" x="139" y="26" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="evY-PP-eWD" secondAttribute="trailing" id="48o-8a-V0e"/>
+                                    <constraint firstAttribute="bottom" secondItem="evY-PP-eWD" secondAttribute="bottom" id="6U2-xK-5tB"/>
+                                    <constraint firstItem="X4F-WN-NiE" firstAttribute="centerY" secondItem="evY-PP-eWD" secondAttribute="centerY" id="RyN-Hh-Jba"/>
+                                    <constraint firstItem="evY-PP-eWD" firstAttribute="top" secondItem="CLC-Kz-5DP" secondAttribute="top" id="mDl-wh-hK6"/>
+                                    <constraint firstItem="X4F-WN-NiE" firstAttribute="centerX" secondItem="evY-PP-eWD" secondAttribute="centerX" id="vSR-KC-Eja"/>
+                                    <constraint firstItem="evY-PP-eWD" firstAttribute="leading" secondItem="CLC-Kz-5DP" secondAttribute="leading" id="xtE-oK-TqT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="evY-PP-eWD" firstAttribute="width" secondItem="NiV-66-GKU" secondAttribute="width" multiplier="1:2" id="0fG-qG-U09"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CLC-Kz-5DP" secondAttribute="trailing" constant="-20" id="6Px-aY-vub"/>
                             <constraint firstItem="Sb0-C8-95E" firstAttribute="leading" secondItem="NiV-66-GKU" secondAttribute="leadingMargin" constant="-20" id="AHJ-Nu-rT4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="evY-PP-eWD" secondAttribute="trailing" constant="-20" id="EIX-Vg-tdZ"/>
-                            <constraint firstItem="Dls-i4-Nlf" firstAttribute="top" secondItem="evY-PP-eWD" secondAttribute="bottom" id="Gom-eW-zjW"/>
+                            <constraint firstItem="Dls-i4-Nlf" firstAttribute="top" secondItem="CLC-Kz-5DP" secondAttribute="bottom" id="HYR-cH-JVy"/>
                             <constraint firstItem="Dls-i4-Nlf" firstAttribute="top" secondItem="Sb0-C8-95E" secondAttribute="bottom" id="LRN-g6-pUO"/>
+                            <constraint firstItem="evY-PP-eWD" firstAttribute="leading" secondItem="Sb0-C8-95E" secondAttribute="trailing" id="TuE-fm-DSg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eeY-qd-b5a" secondAttribute="trailing" constant="-20" id="V3P-Zz-xm6"/>
                             <constraint firstItem="eeY-qd-b5a" firstAttribute="leading" secondItem="NiV-66-GKU" secondAttribute="leadingMargin" constant="-20" id="bGu-nx-A5K"/>
                             <constraint firstItem="Dls-i4-Nlf" firstAttribute="top" secondItem="eeY-qd-b5a" secondAttribute="bottom" constant="70" id="dvc-6E-q4j"/>
-                            <constraint firstItem="evY-PP-eWD" firstAttribute="top" secondItem="eeY-qd-b5a" secondAttribute="bottom" constant="-1" id="e1c-EV-fxn"/>
+                            <constraint firstItem="evY-PP-eWD" firstAttribute="top" secondItem="eeY-qd-b5a" secondAttribute="bottom" constant="-1" id="fib-77-dci"/>
                             <constraint firstItem="eeY-qd-b5a" firstAttribute="top" secondItem="NiV-66-GKU" secondAttribute="topMargin" id="o5H-Ku-FJv"/>
                             <constraint firstItem="Sb0-C8-95E" firstAttribute="width" secondItem="NiV-66-GKU" secondAttribute="width" multiplier="1:2" id="uqy-QS-7ss"/>
                         </constraints>
@@ -270,6 +287,9 @@
                         <outlet property="friendInfoSummaryView" destination="OHI-6W-OPd" id="0Yt-Iu-ZjO"/>
                         <outlet property="friendInfoTitleView" destination="U0d-gi-FBB" id="wIA-o9-qMb"/>
                         <outlet property="mapView" destination="eeY-qd-b5a" id="c5v-UC-wt2"/>
+                        <outlet property="shareLocationActivityView" destination="X4F-WN-NiE" id="ffD-dQ-vuO"/>
+                        <outlet property="shareLocationButton" destination="evY-PP-eWD" id="Sm8-kG-e4v"/>
+                        <segue destination="DOv-GX-2tU" kind="show" identifier="OpenSelectFriendsSegue" id="1H5-Co-XZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alE-ms-Bsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -400,6 +420,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAh-IR-sQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2708" y="613"/>
+        </scene>
+        <!--Select friends-->
+        <scene sceneID="cHg-S7-9Mc">
+            <objects>
+                <viewController id="DOv-GX-2tU" customClass="SelectFriendsViewController" customModule="FindMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xZc-ZD-SdK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ctr-Z1-DZf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RfC-Rx-GuY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qrB-bQ-b64">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" textLabel="hAY-8a-9Hp" style="IBUITableViewCellStyleDefault" id="2cE-Qy-9Rr">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2cE-Qy-9Rr" id="9tG-Rw-j9Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hAY-8a-9Hp">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ctr-Z1-DZf" firstAttribute="top" secondItem="qrB-bQ-b64" secondAttribute="bottom" id="9tS-vg-aDl"/>
+                            <constraint firstItem="qrB-bQ-b64" firstAttribute="top" secondItem="xZc-ZD-SdK" secondAttribute="bottom" id="BZl-hq-YYB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qrB-bQ-b64" secondAttribute="trailing" constant="-20" id="jFu-BK-Ygd"/>
+                            <constraint firstItem="qrB-bQ-b64" firstAttribute="leading" secondItem="RfC-Rx-GuY" secondAttribute="leadingMargin" constant="-20" id="mok-a0-IBL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select friends" id="fQz-IJ-zE6">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="3gY-Xf-JWl">
+                            <connections>
+                                <action selector="done:" destination="DOv-GX-2tU" id="toU-ep-4Tg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="qrB-bQ-b64" id="DT0-zH-Ece"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Skt-5s-PNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3080" y="1289"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
