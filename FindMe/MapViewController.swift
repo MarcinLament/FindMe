@@ -22,6 +22,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     var userCurrentLocation: CLLocation?
     var locationManager: CLLocationManager!
+    
+    var hasSetInitialLocation: Bool = false
 
     var friendsList: [PFObject]?
     
@@ -103,33 +105,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
                 self.shareLocationButton.hidden = false
             }
         }
-        
-        
-        
-        //        let params: [NSObject : NSObject] = ["latitude": 51.5074,
-        //                                             "longitude":0.1278,
-        //                                             "recipients":["dmPgREiRiY","8Hnnz3eAUH"]]
-        //
-        //        PFCloud.callFunctionInBackground("shareLocation", withParameters: params) {
-        //            (response: AnyObject?, error: NSError?) -> Void in
-        //
-        //            if(error != nil){
-        //                print(error)
-        //            }
-        //
-        //            print(response)
-        //        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         if segue!.identifier == "OpenSelectFriendsSegue" {
             let viewController:SelectFriendsViewController = segue!.destinationViewController as! SelectFriendsViewController
             viewController.friendsList = friendsList
-            
-//            let indexPath = self.tableView.indexPathForSelectedRow()
-//            viewController.pinCode = self.exams[indexPath.row]
+            viewController.userCurrentLocation = userCurrentLocation
             
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None
     }
     
     func fetchFriendsLocation(){
@@ -143,6 +135,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
                 print(error)
                 return;
             }
+            
+            print(response)
             
             var friendLocationData: FriendLocationData?
             if let data = response!.dataUsingEncoding(NSUTF8StringEncoding) {
@@ -168,10 +162,43 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             var text = String(count!) + " "
             text += (count == 1) ? "friend" : "friends"
             friendInfoTitleView.text = text
+            
+            //show on the map
+            showFriendsOnMap((friendLocationData?.friendLocationList)!)
+            
         }else{
             friendInfoSummaryView.hidden = false
             friendInfoSummaryView.text = "No friends on the map"
         }
+    }
+    
+    func showFriendsOnMap(friendLocationList: [UserProfile]){
+        
+        var annotations = [MKPointAnnotation]()
+        for friendLocation in friendLocationList {
+            let coordinate = CLLocationCoordinate2D(latitude: (friendLocation.userLocation?.latitude)!, longitude: (friendLocation.userLocation?.longitude)!)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = friendLocation.displayName
+            annotation.subtitle = "Shared \(getFormettedDate((friendLocation.userLocation?.date)!))"
+            
+//            if(checkin.isUsersPost){
+//                let span:MKCoordinateSpan = MKCoordinateSpanMake(0.5, 0.5)
+//                let region: MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
+//                mapView.setRegion(region, animated: true)
+//            }
+            
+            annotations.append(annotation)
+        }
+        
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(annotations)
+        
+        mapView.layoutMargins = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
+        mapView.showAnnotations(mapView.annotations, animated: true)
+        
+//
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -181,12 +208,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
+    
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         userCurrentLocation = locations.last
+        if hasSetInitialLocation {
+            return;
+        }else{
+            hasSetInitialLocation = true
+        }
         
         let center = CLLocationCoordinate2D(latitude: userCurrentLocation!.coordinate.latitude, longitude: userCurrentLocation!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         self.mapView.setRegion(region, animated: true)
+    }
+    
+    func getFormettedDate(dateString: String) -> String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+        print(dateFormatter.dateFromString(dateString))
+//        return ""
+        return timeAgoSinceDate(dateFormatter.dateFromString(dateString)!, numericDates: true)
     }
 }

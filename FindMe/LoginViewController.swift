@@ -30,6 +30,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         print("User not logged in")
         
+        usernameView.autocorrectionType = .No
+        
         usernameView.hidden = false
         passwordView.hidden = false
         loginButton.hidden = false

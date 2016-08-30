@@ -62,9 +62,12 @@ class FriendLocationData{
             
             let profileLocation = profile["userLocation"]
             if(profileLocation != nil){
+                
+                let userLocation: UserLocation = UserLocation()
+                userLocation.date = profileLocation!!["updatedAt"] as? String
+                
                 let location = profileLocation!!["location"]
                 if(location != nil){
-                    let userLocation: UserLocation = UserLocation()
                     userLocation.latitude = location!!["latitude"] as? Double
                     userLocation.longitude = location!!["longitude"] as? Double
                     newUserProfile.userLocation = userLocation
@@ -77,6 +80,7 @@ class FriendLocationData{
 }
 
 class UserLocation{
+    var date: String?
     var latitude: Double?
     var longitude: Double?
 }
