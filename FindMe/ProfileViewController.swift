@@ -9,9 +9,13 @@
 import Foundation
 import UIKit
 import Parse
+import AvatarImageView
+
 class ProfileViewController: UIViewController{
     
     @IBOutlet weak var userDisplayNameView: UITextView!
+    
+    @IBOutlet weak var profileImageView: AvatarImageView!
     
     override func viewDidLoad() {
         
@@ -19,7 +23,12 @@ class ProfileViewController: UIViewController{
         
         userProfile.fetchIfNeededInBackgroundWithBlock {
             (userProfile: PFObject?, error: NSError?) -> Void in
-            self.userDisplayNameView.text = "Hello, " + (userProfile!["displayName"] as! String)
+            
+            let userName = userProfile!["displayName"] as! String
+            
+            self.userDisplayNameView.text = "Hello, " + userName
+            
+            AvatarGenerator.getAvatar(userName, imageView: self.profileImageView)
         }
 
     }
@@ -34,3 +43,4 @@ class ProfileViewController: UIViewController{
     }
     
 }
+

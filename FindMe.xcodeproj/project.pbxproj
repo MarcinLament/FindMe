@@ -18,6 +18,7 @@
 		20844A4F1D56313200309A02 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20844A4E1D56313200309A02 /* MapKit.framework */; };
 		20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A501D57B94B00309A02 /* ProfileViewController.swift */; };
 		20D7D9D31D762FB7003F2995 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7D9D21D762FB7003F2995 /* TimeAgo.swift */; };
+		20D7D9D51D774F86003F2995 /* AvatarGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */; };
 		20DFA1051D592CC7009C1357 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1041D592CC7009C1357 /* UserData.swift */; };
 		20DFA1071D592CE9009C1357 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1061D592CE9009C1357 /* FriendListViewController.swift */; };
 		20DFA1091D6F954F009C1357 /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */; };
@@ -38,6 +39,7 @@
 		20844A4E1D56313200309A02 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		20844A501D57B94B00309A02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		20D7D9D21D762FB7003F2995 /* TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
+		20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarGenerator.swift; sourceTree = "<group>"; };
 		20DFA1041D592CC7009C1357 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		20DFA1061D592CE9009C1357 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFriendsViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				20DFA1041D592CC7009C1357 /* UserData.swift */,
 				20D7D9D21D762FB7003F2995 /* TimeAgo.swift */,
+				20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */,
+				20D7D9D51D774F86003F2995 /* AvatarGenerator.swift in Sources */,
 				20DFA1091D6F954F009C1357 /* SelectFriendsViewController.swift in Sources */,
 				20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */,
 				20DFA1051D592CC7009C1357 /* UserData.swift in Sources */,

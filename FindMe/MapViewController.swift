@@ -230,7 +230,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
         dateFormatter.timeZone = NSTimeZone(name: "GMT")
         print(dateFormatter.dateFromString(dateString))
-//        return ""
         return timeAgoSinceDate(dateFormatter.dateFromString(dateString)!, numericDates: true)
     }
 }
