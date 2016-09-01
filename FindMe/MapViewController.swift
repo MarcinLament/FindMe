@@ -227,9 +227,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     func getFormettedDate(dateString: String) -> String{
         let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
         dateFormatter.timeZone = NSTimeZone(name: "GMT")
-        print(dateFormatter.dateFromString(dateString))
-        return timeAgoSinceDate(dateFormatter.dateFromString(dateString)!, numericDates: true)
+        
+        let date = dateFormatter.dateFromString(dateString)
+        if(date != nil){
+            return timeAgoSinceDate(date!, numericDates: true)
+        }
+        
+        return ""
     }
 }

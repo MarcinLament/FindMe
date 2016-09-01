@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,40 +19,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HR1-fV-Lra">
-                                <rect key="frame" x="220" y="258" width="160" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HR1-fV-Lra">
+                                <rect key="frame" x="168" y="478" width="160" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anm-k2-TAZ">
-                                <rect key="frame" x="255" y="296" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anm-k2-TAZ">
+                                <rect key="frame" x="203" y="516" width="90" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zry-YV-fBi"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRo-yL-Wmk">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRo-yL-Wmk">
                                 <rect key="frame" x="255" y="562" width="90" height="30"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="register:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VcF-6D-Yzr"/>
                                 </connections>
                             </button>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="apq-YB-laE">
-                                <rect key="frame" x="220" y="220" width="160" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="apq-YB-laE">
+                                <rect key="frame" x="168" y="440" width="160" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="dx9-Ix-dRk">
+                                <rect key="frame" x="220" y="100" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="BbO-8O-3Zc"/>
+                                    <constraint firstAttribute="height" constant="160" id="b8u-N6-zY3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FindMe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fys-wg-wYe">
+                                <rect key="frame" x="223" y="259" width="155" height="59"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OhU-xj-QoO">
+                                <rect key="frame" x="20" y="335" width="560" height="72"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-Sf-T2s">
+                                        <rect key="frame" x="8" y="8" width="56" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90094150641025639" green="0.90094150641025639" blue="0.90094150641025639" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GRo-yL-Wmk" secondAttribute="bottom" constant="8" id="14q-Jo-TSR"/>
-                            <constraint firstItem="anm-k2-TAZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CK9-Zw-Z7q"/>
-                            <constraint firstItem="HR1-fV-Lra" firstAttribute="top" secondItem="apq-YB-laE" secondAttribute="bottom" constant="8" id="HDL-jC-tCl"/>
-                            <constraint firstItem="GRo-yL-Wmk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RBY-i4-REQ"/>
-                            <constraint firstItem="anm-k2-TAZ" firstAttribute="top" secondItem="HR1-fV-Lra" secondAttribute="bottom" constant="8" id="dQE-UJ-Ulc"/>
-                            <constraint firstItem="HR1-fV-Lra" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qEf-VE-xGT"/>
-                            <constraint firstItem="apq-YB-laE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zrG-Ic-KjY"/>
+                            <constraint firstItem="dx9-Ix-dRk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="5J8-Qf-yS0"/>
+                            <constraint firstItem="Fys-wg-wYe" firstAttribute="top" secondItem="dx9-Ix-dRk" secondAttribute="bottom" constant="-1" id="Y7s-3o-ldm"/>
+                            <constraint firstItem="Fys-wg-wYe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ka6-Ng-2d5"/>
+                            <constraint firstItem="dx9-Ix-dRk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kgg-6h-0kK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fd8-NM-L9j"/>
@@ -60,6 +79,7 @@
                         <outlet property="loginButton" destination="anm-k2-TAZ" id="aTJ-bn-8Bg"/>
                         <outlet property="passwordView" destination="HR1-fV-Lra" id="BSF-Df-LPf"/>
                         <outlet property="registerButton" destination="GRo-yL-Wmk" id="NB6-IA-psF"/>
+                        <outlet property="tempImgView" destination="bwA-Sf-T2s" id="nKp-O7-ujC"/>
                         <outlet property="usernameView" destination="apq-YB-laE" id="Q0S-QO-MHJ"/>
                         <segue destination="6J3-Kq-dUi" kind="show" identifier="OpenUserAreaSegue" id="Uqy-Sv-IoL"/>
                     </connections>
@@ -487,6 +507,9 @@
             <point key="canvasLocation" x="3080" y="1289"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon" width="384" height="384"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Uqy-Sv-IoL"/>
     </inferredMetricsTieBreakers>

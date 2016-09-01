@@ -15,11 +15,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordView: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var tempImgView: UIImageView!
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidLoad() {
+        configureBackground()
         
-        
+        tempImgView.backgroundColor = UIColor.redColor()
+        tempImgView.layer.cornerRadius = 8.0
+        tempImgView.clipsToBounds = true
+        tempImgView.image = UIImage(named:"Icon")
+        tempImgView.layer.borderWidth = 10
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -75,6 +81,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         loginButton.enabled = !hasMissingField
         loginButton.userInteractionEnabled = !hasMissingField
+    }
+    
+    private func configureBackground() {
+        let backgroundGradient = CAGradientLayer()
+        let colorTop = UIColor(red:0.90, green:0.36, blue:0.26, alpha:1.0).CGColor
+        let colorBottom = UIColor(red:0.91, green:0.21, blue:0.29, alpha:1.0).CGColor
+        backgroundGradient.colors = [colorTop, colorBottom]
+        backgroundGradient.locations = [0.0, 1.0]
+        backgroundGradient.frame = view.frame
+        view.layer.insertSublayer(backgroundGradient, atIndex: 0)
     }
 }
 
