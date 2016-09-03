@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202E1AD61D7B4833005DA745 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E1AD51D7B4833005DA745 /* UIColor.swift */; };
 		202F01871D55F5BD00B65FC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F01861D55F5BD00B65FC8 /* AppDelegate.swift */; };
 		202F01891D55F5BD00B65FC8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F01881D55F5BD00B65FC8 /* LoginViewController.swift */; };
 		202F018C1D55F5BD00B65FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202F018A1D55F5BD00B65FC8 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 		20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A501D57B94B00309A02 /* ProfileViewController.swift */; };
 		20D7D9D31D762FB7003F2995 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7D9D21D762FB7003F2995 /* TimeAgo.swift */; };
 		20D7D9D51D774F86003F2995 /* AvatarGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */; };
+		20D7D9D71D789C92003F2995 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7D9D61D789C92003F2995 /* UIImage.swift */; };
+		20D7D9D91D789E55003F2995 /* UIInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7D9D81D789E55003F2995 /* UIInputTextView.swift */; };
 		20DFA1051D592CC7009C1357 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1041D592CC7009C1357 /* UserData.swift */; };
 		20DFA1071D592CE9009C1357 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1061D592CE9009C1357 /* FriendListViewController.swift */; };
 		20DFA1091D6F954F009C1357 /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */; };
@@ -26,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202E1AD51D7B4833005DA745 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		202F01831D55F5BD00B65FC8 /* FindMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		202F01861D55F5BD00B65FC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		202F01881D55F5BD00B65FC8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		20844A501D57B94B00309A02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		20D7D9D21D762FB7003F2995 /* TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarGenerator.swift; sourceTree = "<group>"; };
+		20D7D9D61D789C92003F2995 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		20D7D9D81D789E55003F2995 /* UIInputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIInputTextView.swift; sourceTree = "<group>"; };
 		20DFA1041D592CC7009C1357 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		20DFA1061D592CE9009C1357 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFriendsViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +110,8 @@
 				20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */,
 				20844A501D57B94B00309A02 /* ProfileViewController.swift */,
 				20DFA1061D592CE9009C1357 /* FriendListViewController.swift */,
+				20D7D9D61D789C92003F2995 /* UIImage.swift */,
+				20D7D9D81D789E55003F2995 /* UIInputTextView.swift */,
 			);
 			path = FindMe;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 				20DFA1041D592CC7009C1357 /* UserData.swift */,
 				20D7D9D21D762FB7003F2995 /* TimeAgo.swift */,
 				20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */,
+				202E1AD51D7B4833005DA745 /* UIColor.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -251,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */,
+				202E1AD61D7B4833005DA745 /* UIColor.swift in Sources */,
 				20D7D9D51D774F86003F2995 /* AvatarGenerator.swift in Sources */,
 				20DFA1091D6F954F009C1357 /* SelectFriendsViewController.swift in Sources */,
 				20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */,
@@ -259,7 +269,9 @@
 				20DFA1071D592CE9009C1357 /* FriendListViewController.swift in Sources */,
 				20D7D9D31D762FB7003F2995 /* TimeAgo.swift in Sources */,
 				20844A4B1D5620B200309A02 /* UIViewController.swift in Sources */,
+				20D7D9D71D789C92003F2995 /* UIImage.swift in Sources */,
 				20844A4D1D5630CE00309A02 /* MapViewController.swift in Sources */,
+				20D7D9D91D789E55003F2995 /* UIInputTextView.swift in Sources */,
 				202F01871D55F5BD00B65FC8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

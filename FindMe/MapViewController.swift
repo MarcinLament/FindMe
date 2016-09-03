@@ -14,11 +14,10 @@ import Parse
 class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var friendInfoTitleView: UILabel!
-    @IBOutlet weak var friendInfoSummaryView: UILabel!
     @IBOutlet weak var friendInfoActivityView: UIActivityIndicatorView!
     @IBOutlet weak var shareLocationButton: UIButton!
     @IBOutlet weak var shareLocationActivityView: UIActivityIndicatorView!
+    @IBOutlet weak var statusLabel: UILabel!
     
     var userCurrentLocation: CLLocation?
     var locationManager: CLLocationManager!
@@ -50,6 +49,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         }else{
             print("disabled")
         }
+        
+        stylePrimaryButton(shareLocationButton, roundedCorners: false)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -154,21 +155,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func showFriendsLocations(friendLocationData: FriendLocationData?){
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.Center
+        
         if(friendLocationData != nil && friendLocationData?.friendLocationList.count > 0){
-            friendInfoTitleView.hidden = false
-            friendInfoSummaryView.hidden = false
             
             let count = friendLocationData?.friendLocationList.count
-            var text = String(count!) + " "
-            text += (count == 1) ? "friend" : "friends"
-            friendInfoTitleView.text = text
+            
+            var text1Attributes = [String : NSObject]()
+            text1Attributes[NSFontAttributeName] = UIFont(name: "Helvetica Neue", size: 26.0)!
+            text1Attributes[NSForegroundColorAttributeName] = UIColor.whiteColor()
+            text1Attributes[NSParagraphStyleAttributeName] = paragraphStyle
+            let text1 = NSMutableAttributedString(string: "\(count!) \((count! == 1) ? "friend" : "friends")", attributes: text1Attributes)
+            
+            var text2Attributes = [String : NSObject]()
+            text2Attributes[NSFontAttributeName] = UIFont(name: "Helvetica Neue", size: 14.0)!
+            text2Attributes[NSForegroundColorAttributeName] = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.8)
+            text2Attributes[NSParagraphStyleAttributeName] = paragraphStyle
+            let text2 = NSAttributedString(string: "\n currently on the map", attributes: text2Attributes)
+            text1.appendAttributedString(text2)
+            
+            statusLabel.attributedText = text1
             
             //show on the map
             showFriendsOnMap((friendLocationData?.friendLocationList)!)
             
         }else{
-            friendInfoSummaryView.hidden = false
-            friendInfoSummaryView.text = "No friends on the map"
+            
+            var text1Attributes = [String : NSObject]()
+            text1Attributes[NSFontAttributeName] = UIFont(name: "Helvetica Neue", size: 16.0)!
+            text1Attributes[NSForegroundColorAttributeName] = UIColor.whiteColor()
+            text1Attributes[NSParagraphStyleAttributeName] = paragraphStyle
+            let text1 = NSMutableAttributedString(string: "No friends on the map", attributes: text1Attributes)
+            statusLabel.attributedText = text1
         }
     }
     

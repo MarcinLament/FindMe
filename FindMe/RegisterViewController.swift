@@ -12,31 +12,38 @@ import Parse
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var usernameView: UITextField!
-    @IBOutlet weak var emailView: UITextField!
-    @IBOutlet weak var passwordView: UITextField!
-    @IBOutlet weak var displayNameView: UITextField!
+    @IBOutlet weak var usernameView: UIInputTextView!
+    @IBOutlet weak var emailView: UIInputTextView!
+    @IBOutlet weak var passwordView: UIInputTextView!
+    @IBOutlet weak var displayNameView: UIInputTextView!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
-        usernameView.delegate = self
-        passwordView.delegate = self
-        emailView.delegate = self
-        displayNameView.delegate = self
         
-        checkRegisterButtonState()
+        stylePrimaryButton(registerButton, roundedCorners: true)
+        stylePrimaryBackground()
+        
+        usernameView.setStyle(nil, textPlaceholder: "Username", isPassword: false)
+        emailView.setStyle(nil, textPlaceholder: "Email", isPassword: false)
+        passwordView.setStyle(nil, textPlaceholder: "Password", isPassword: true)
+        displayNameView.setStyle(nil, textPlaceholder: "Display name", isPassword: false)
     }
 
-    @IBAction func close(sender: AnyObject?) {
+    @IBAction func cancel(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil);
     }
     
     @IBAction func register(sender: AnyObject) {
         
+        if(usernameView.getText() == "" || passwordView.getText() == "" || emailView.getText() == "" || displayNameView.getText() == ""){
+            showAlert("Invalid details", message: "Fields cannot be empty.", completion: nil)
+        }
+        
         var missing = ""
-        if isInvalidText(usernameView.text!) { missing += "\n- Invalid username"}
-        if isInvalidText(passwordView.text!) { missing += "\n- Invalid password"}
-        if isInvalidText(emailView.text!) || !isValidEmail(emailView.text!) { missing += "\n- Invalid email"}
+        if isInvalidText(usernameView.getText()) { missing += "\n- Invalid username"}
+        if isInvalidText(passwordView.getText()) { missing += "\n- Invalid password"}
+        if isInvalidText(emailView.getText()) || !isValidEmail(emailView.getText()) { missing += "\n- Invalid email"}
         
         if(missing != ""){
             showAlert("Invalid details", message: "Please correct the following: \(missing)", completion: nil)
@@ -46,8 +53,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         registerNewUser()
     }
     
-    
-    
     func isInvalidText(text: String) -> Bool{
         return text.characters.count > 45
             || text.containsString(" ")
@@ -56,18 +61,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func registerNewUser(){
         //create unique user profile
         let userProfile = PFObject(className: "UserProfile")
-        userProfile["displayName"] = displayNameView.text
-        userProfile["email"] = emailView.text
+        userProfile["displayName"] = displayNameView.getText()
+        userProfile["email"] = emailView.getText()
         
         //create new user
         var user = PFUser()
-        user.username = usernameView.text
-        user.password = passwordView.text
-        user.email = emailView.text
+        user.username = usernameView.getText()
+        user.password = passwordView.getText()
+        user.email = emailView.getText()
         user["userProfile"] = userProfile
         
         //userProfile["user"] = user
         
+        activityView.startAnimating()
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             if let error = error {
@@ -79,7 +85,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             }else{
             
                 //login newly created user
-                PFUser.logInWithUsernameInBackground(self.usernameView.text!, password: self.passwordView.text!) { (user, error) -> Void in
+                PFUser.logInWithUsernameInBackground(self.usernameView.getText(), password: self.passwordView.getText()) { (user, error) -> Void in
+                    
+                    self.activityView.stopAnimating()
                     if error != nil {
                         self.showAlert("Error", message: error!.localizedDescription, completion: nil)
                     } else {
@@ -92,26 +100,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                 }
-                
-                
-                
-                
             }
         }
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        checkRegisterButtonState()
-        return true
-    }
-    
-    func checkRegisterButtonState(){
-        let hasMissingField = usernameView.text == ""
-            || passwordView.text == ""
-            || emailView.text == ""
-            || displayNameView.text == ""
-        
-        registerButton.enabled = !hasMissingField
-        registerButton.userInteractionEnabled = !hasMissingField
     }
 }

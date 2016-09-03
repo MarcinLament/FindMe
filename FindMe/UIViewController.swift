@@ -29,4 +29,38 @@ extension UIViewController{
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluateWithObject(text)
     }
+    
+    func configureBackground(colorTop:CGColor, colorBottom:CGColor) {
+        let backgroundGradient = CAGradientLayer()
+        backgroundGradient.colors = [colorTop, colorBottom]
+        backgroundGradient.locations = [0.0, 1.0]
+        backgroundGradient.frame = view.frame
+        view.layer.insertSublayer(backgroundGradient, atIndex: 0)
+    }
+    
+    func styleButton(uiButton: UIView, colorTop: CGColor, colorBottom: CGColor, roundedCorners: Bool){
+        uiButton.tintColor = UIColor.whiteColor()
+        
+        let backgroundGradient = CAGradientLayer()
+        backgroundGradient.frame.size = uiButton.frame.size
+        backgroundGradient.colors = [colorTop, colorBottom]
+        backgroundGradient.locations = [0.0, 1.0]
+        
+        if(roundedCorners){
+            backgroundGradient.cornerRadius = 6
+        }
+        uiButton.layer.insertSublayer(backgroundGradient, atIndex: 0)
+    }
+    
+    func stylePrimaryBackground(){
+        let colorTop = UIColor(red:0.89, green:0.14, blue:0.40, alpha:1.0).CGColor
+        let colorBottom = UIColor(red:0.88, green:0.14, blue:0.38, alpha:1.0).CGColor
+        configureBackground(colorTop, colorBottom: colorBottom)
+    }
+    
+    func stylePrimaryButton(uiButton: UIView, roundedCorners: Bool){
+        let top = UIColor(red:0.66, green:0.82, blue:0.04, alpha:1.0).CGColor
+        let bottom = UIColor(red:0.58, green:0.73, blue:0.03, alpha:1.0).CGColor
+        styleButton(uiButton, colorTop: top, colorBottom: bottom, roundedCorners: roundedCorners)
+    }
 }

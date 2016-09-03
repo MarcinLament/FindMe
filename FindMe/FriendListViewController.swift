@@ -18,14 +18,22 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
 //    
     var userData: UserData?
     
-    @IBOutlet weak var emailView: UITextField!
+    @IBOutlet weak var emailView: UIInputTextView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var inviteButton: UIButton!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        stylePrimaryButton(inviteButton, roundedCorners: true)
+//        stylePrimaryBackground()
+        emailView.setStyle("Email", textPlaceholder: "Email address", isPassword: false)
     
+//        tableView.backgroundColor = UIColor(red:0.88, green:0.22, blue:0.44, alpha:1.0)
+        
         getUserFriendList()
     }
     
@@ -85,6 +93,34 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         return 3
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        
+        
+        let title: String?
+        switch section {
+        case 0:
+            title = userData?.friendRequestList.count == 0 ? nil : "Sent requests"
+        case 1:
+            title = userData?.sentInvitesList.count == 0 ? nil : "Awaiting your action"
+        case 2:
+            title = userData?.friendsList.count == 0 ? nil : "Friends"
+        default:
+            return nil
+        }
+        
+        let headerView = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, 30))
+        
+        if(title == nil){
+            headerView.backgroundColor = UIColor.customPinkColor()
+        }else{
+            headerView.backgroundColor = UIColor.customPinkDarkColor()
+            headerView.textColor = UIColor.whiteColor()
+            headerView.text = " " + title!
+        }
+        
+        return headerView
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(indexPath.section == 0){
             print("Selected \(indexPath.row)")
@@ -134,6 +170,10 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
                                    reuseIdentifier: "TableCell")
         }
         
+        cell!.backgroundColor = UIColor.customPinkColor()
+        cell!.textLabel?.textColor = UIColor.whiteColor()
+        cell!.detailTextLabel?.textColor = UIColor.whiteColor()
+        
         switch indexPath.section {
         case 0:
             cell!.textLabel!.text = userData?.friendRequestList[indexPath.row].authorName
@@ -161,19 +201,21 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func invite(sender: AnyObject) {
         
-        if(!isValidEmail(emailView.text!)){
+        if(!isValidEmail(emailView.getText())){
             showAlert("Error", message: "Invalid email address", completion: nil)
             return;
         }
         
-        let params: [NSObject : NSObject] = ["recipientEmail":emailView.text!]
+        activityView.startAnimating()
+        let params: [NSObject : NSObject] = ["recipientEmail":emailView.getText()]
         PFCloud.callFunctionInBackground("sendFriendRequest", withParameters: params) {
             (response: AnyObject?, error: NSError?) -> Void in
             
+            self.activityView.stopAnimating()
             if(error != nil){
                 print(error)
             }else{
-                self.emailView.text = ""
+                self.emailView.textField?.text = ""
             }
             
             self.getUserFriendList()

@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initializeWithConfiguration(configuration)
         
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
+        
         return true
     }
 
