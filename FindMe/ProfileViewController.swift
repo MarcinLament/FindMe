@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController{
     @IBOutlet weak var userDisplayNameView: UITextView!
     
     @IBOutlet weak var profileImageView: AvatarImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         

@@ -99,9 +99,9 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         let title: String?
         switch section {
         case 0:
-            title = userData?.friendRequestList.count == 0 ? nil : "Sent requests"
+            title = userData?.friendRequestList.count == 0 ? nil : "Awaiting your action"
         case 1:
-            title = userData?.sentInvitesList.count == 0 ? nil : "Awaiting your action"
+            title = userData?.sentInvitesList.count == 0 ? nil : "Sent requests"
         case 2:
             title = userData?.friendsList.count == 0 ? nil : "Friends"
         default:
