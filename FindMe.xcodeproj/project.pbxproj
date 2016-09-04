@@ -13,6 +13,10 @@
 		202F018C1D55F5BD00B65FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202F018A1D55F5BD00B65FC8 /* Main.storyboard */; };
 		202F018E1D55F5BD00B65FC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 202F018D1D55F5BD00B65FC8 /* Assets.xcassets */; };
 		202F01911D55F5BD00B65FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202F018F1D55F5BD00B65FC8 /* LaunchScreen.storyboard */; };
+		20818DB01D7C4374000B25F9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20818DAE1D7C4374000B25F9 /* Model.xcdatamodeld */; };
+		20818DBA1D7C45E8000B25F9 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20818DB91D7C45E8000B25F9 /* CoreDataStackManager.swift */; };
+		20818DC11D7C520D000B25F9 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20818DBF1D7C520D000B25F9 /* Location+CoreDataProperties.swift */; };
+		20818DC21D7C520D000B25F9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20818DC01D7C520D000B25F9 /* Location.swift */; };
 		20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A481D55FC9600309A02 /* RegisterViewController.swift */; };
 		20844A4B1D5620B200309A02 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A4A1D5620B200309A02 /* UIViewController.swift */; };
 		20844A4D1D5630CE00309A02 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A4C1D5630CE00309A02 /* MapViewController.swift */; };
@@ -37,6 +41,10 @@
 		202F018D1D55F5BD00B65FC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		202F01901D55F5BD00B65FC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		202F01921D55F5BD00B65FC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20818DAF1D7C4374000B25F9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		20818DB91D7C45E8000B25F9 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStackManager.swift; path = ../../../../Downloads/CoreDataStackManager.swift; sourceTree = "<group>"; };
+		20818DBF1D7C520D000B25F9 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		20818DC01D7C520D000B25F9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../Location.swift; sourceTree = "<group>"; };
 		20844A481D55FC9600309A02 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		20844A4A1D5620B200309A02 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		20844A4C1D5630CE00309A02 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -97,32 +105,76 @@
 		202F01851D55F5BD00B65FC8 /* FindMe */ = {
 			isa = PBXGroup;
 			children = (
+				20818DC71D7C6931000B25F9 /* Storyboards */,
+				20818DC61D7C691D000B25F9 /* Views */,
+				20818DC51D7C68DF000B25F9 /* Controllers */,
+				20818DC41D7C68D1000B25F9 /* Utils */,
+				20818DC31D7C68C9000B25F9 /* Extensions */,
 				20844A541D5927E900309A02 /* Models */,
-				20844A4A1D5620B200309A02 /* UIViewController.swift */,
 				202F01861D55F5BD00B65FC8 /* AppDelegate.swift */,
-				202F01881D55F5BD00B65FC8 /* LoginViewController.swift */,
-				202F018A1D55F5BD00B65FC8 /* Main.storyboard */,
-				20844A481D55FC9600309A02 /* RegisterViewController.swift */,
 				202F018D1D55F5BD00B65FC8 /* Assets.xcassets */,
-				202F018F1D55F5BD00B65FC8 /* LaunchScreen.storyboard */,
 				202F01921D55F5BD00B65FC8 /* Info.plist */,
+				20818DAE1D7C4374000B25F9 /* Model.xcdatamodeld */,
+			);
+			path = FindMe;
+			sourceTree = "<group>";
+		};
+		20818DC31D7C68C9000B25F9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				202E1AD51D7B4833005DA745 /* UIColor.swift */,
+				20844A4A1D5620B200309A02 /* UIViewController.swift */,
+				20D7D9D61D789C92003F2995 /* UIImage.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		20818DC41D7C68D1000B25F9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				20D7D9D21D762FB7003F2995 /* TimeAgo.swift */,
+				20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */,
+				20818DB91D7C45E8000B25F9 /* CoreDataStackManager.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		20818DC51D7C68DF000B25F9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				202F01881D55F5BD00B65FC8 /* LoginViewController.swift */,
+				20844A481D55FC9600309A02 /* RegisterViewController.swift */,
 				20844A4C1D5630CE00309A02 /* MapViewController.swift */,
 				20DFA1081D6F954F009C1357 /* SelectFriendsViewController.swift */,
 				20844A501D57B94B00309A02 /* ProfileViewController.swift */,
 				20DFA1061D592CE9009C1357 /* FriendListViewController.swift */,
-				20D7D9D61D789C92003F2995 /* UIImage.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		20818DC61D7C691D000B25F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				20D7D9D81D789E55003F2995 /* UIInputTextView.swift */,
 			);
-			path = FindMe;
+			name = Views;
+			sourceTree = "<group>";
+		};
+		20818DC71D7C6931000B25F9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				202F018A1D55F5BD00B65FC8 /* Main.storyboard */,
+				202F018F1D55F5BD00B65FC8 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		20844A541D5927E900309A02 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20818DBF1D7C520D000B25F9 /* Location+CoreDataProperties.swift */,
+				20818DC01D7C520D000B25F9 /* Location.swift */,
 				20DFA1041D592CC7009C1357 /* UserData.swift */,
-				20D7D9D21D762FB7003F2995 /* TimeAgo.swift */,
-				20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */,
-				202E1AD51D7B4833005DA745 /* UIColor.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -261,12 +313,16 @@
 			files = (
 				20844A511D57B94B00309A02 /* ProfileViewController.swift in Sources */,
 				202E1AD61D7B4833005DA745 /* UIColor.swift in Sources */,
+				20818DC21D7C520D000B25F9 /* Location.swift in Sources */,
+				20818DB01D7C4374000B25F9 /* Model.xcdatamodeld in Sources */,
 				20D7D9D51D774F86003F2995 /* AvatarGenerator.swift in Sources */,
 				20DFA1091D6F954F009C1357 /* SelectFriendsViewController.swift in Sources */,
 				20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */,
 				20DFA1051D592CC7009C1357 /* UserData.swift in Sources */,
 				202F01891D55F5BD00B65FC8 /* LoginViewController.swift in Sources */,
 				20DFA1071D592CE9009C1357 /* FriendListViewController.swift in Sources */,
+				20818DBA1D7C45E8000B25F9 /* CoreDataStackManager.swift in Sources */,
+				20818DC11D7C520D000B25F9 /* Location+CoreDataProperties.swift in Sources */,
 				20D7D9D31D762FB7003F2995 /* TimeAgo.swift in Sources */,
 				20844A4B1D5620B200309A02 /* UIViewController.swift in Sources */,
 				20D7D9D71D789C92003F2995 /* UIImage.swift in Sources */,
@@ -437,6 +493,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20818DAE1D7C4374000B25F9 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20818DAF1D7C4374000B25F9 /* Model.xcdatamodel */,
+			);
+			currentVersion = 20818DAF1D7C4374000B25F9 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 202F017B1D55F5BD00B65FC8 /* Project object */;
 }

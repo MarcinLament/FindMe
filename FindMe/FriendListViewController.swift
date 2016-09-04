@@ -13,66 +13,50 @@ import Parse
 
 class FriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-//    var friends: [PFObject]?
-//    var friendRequests: [PFObject]?
-//    
-    var userData: UserData?
-    
     @IBOutlet weak var emailView: UIInputTextView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inviteButton: UIButton!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
+    
+    var userData: UserData?
     
     override func viewDidLoad() {
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        stylePrimaryButton(inviteButton, roundedCorners: true)
-//        stylePrimaryBackground()
-        emailView.setStyle("Email", textPlaceholder: "Email address", isPassword: false)
-    
-//        tableView.backgroundColor = UIColor(red:0.88, green:0.22, blue:0.44, alpha:1.0)
-        
-        getUserFriendList()
+        initStyles()
+        downloadUserFriendList()
     }
     
-    func getUserFriendList(){
+    func initStyles(){
+        stylePrimaryButton(inviteButton, roundedCorners: true)
+        emailView.setStyle("Email", textPlaceholder: "Email address", isPassword: false)
+    }
+    
+    func downloadUserFriendList(){
         PFCloud.callFunctionInBackground("getFriends", withParameters: nil) {
             (response: AnyObject?, error: NSError?) -> Void in
-            print(response)
             
-            if(error != nil){
-                print("ERRORR!!!!, " + (error?.localizedDescription)! as String)
-            }else{
+            if(error == nil){
                 if let data = response!.dataUsingEncoding(NSUTF8StringEncoding) {
                     do {
                         let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
                         self.userData = UserData(jsonObject: rootObject!)
-                        print(self.userData?.friendsList.count)
                         self.tableView.reloadData()
-                    } catch let error as NSError {
-                        print("\n")
-                        print(error)
-                    }
+                    } catch{}
                 }
             }
         }
     }
     
     func acceptFriendRequest(friendRequest: FriendRequest){
-        print("acceptReq: \(friendRequest.authorProfileId)")
-        
+
         let params: [NSObject : NSObject] = ["authorProfileId":friendRequest.authorProfileId!,
                                             "friendRequestId":friendRequest.objectId!]
         PFCloud.callFunctionInBackground("acceptFriendRequest", withParameters: params) {
             (response: AnyObject?, error: NSError?) -> Void in
-            
-            if(error != nil){
-                print(error)
-            }
-            
-            self.getUserFriendList()
+            self.downloadUserFriendList()
         }
     }
     
@@ -80,12 +64,24 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         let params: [NSObject : NSObject] = ["friendRequestId":friendRequest.objectId!]
         PFCloud.callFunctionInBackground("declineFriendRequest", withParameters: params) {
             (response: AnyObject?, error: NSError?) -> Void in
+            self.downloadUserFriendList()
+        }
+    }
+    
+    func sendFriendRequest(){
+        
+        activityView.startAnimating()
+        let params: [NSObject : NSObject] = ["recipientEmail":emailView.getText()]
+        
+        PFCloud.callFunctionInBackground("sendFriendRequest", withParameters: params) {
+            (response: AnyObject?, error: NSError?) -> Void in
             
-            if(error != nil){
-                print(error)
+            self.activityView.stopAnimating()
+            if(error == nil){
+                self.emailView.textField?.text = ""
             }
             
-            self.getUserFriendList()
+            self.downloadUserFriendList()
         }
     }
     
@@ -94,8 +90,6 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
-        
         let title: String?
         switch section {
         case 0:
@@ -123,8 +117,6 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(indexPath.section == 0){
-            print("Selected \(indexPath.row)")
-            
             showAlert("Friend request", message: "\(userData!.friendRequestList[indexPath.row].authorName!) sent you friend request", positiveButtonText: "Accept", negativeButtonText: "Decline", positiveCompletion: { (UIAlertAction) in
                 self.acceptFriendRequest(self.userData!.friendRequestList[indexPath.row])
                 }, negativeCompletion: { (UIAlertAction) in
@@ -176,8 +168,9 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         switch indexPath.section {
         case 0:
-            cell!.textLabel!.text = userData?.friendRequestList[indexPath.row].authorName
-            cell!.detailTextLabel!.text = "Click here to accept or decline"
+            let authorName = userData?.friendRequestList[indexPath.row].authorName
+            cell!.textLabel!.text = authorName
+            cell!.detailTextLabel!.text = "Accept friend request from \(authorName!)"
             cell!.userInteractionEnabled = true
             break;
         case 1:
@@ -206,19 +199,6 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
             return;
         }
         
-        activityView.startAnimating()
-        let params: [NSObject : NSObject] = ["recipientEmail":emailView.getText()]
-        PFCloud.callFunctionInBackground("sendFriendRequest", withParameters: params) {
-            (response: AnyObject?, error: NSError?) -> Void in
-            
-            self.activityView.stopAnimating()
-            if(error != nil){
-                print(error)
-            }else{
-                self.emailView.textField?.text = ""
-            }
-            
-            self.getUserFriendList()
-        }
+        sendFriendRequest()
     }
 }

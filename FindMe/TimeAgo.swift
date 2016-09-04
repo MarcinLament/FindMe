@@ -67,5 +67,18 @@ func timeAgoSinceDate(date:NSDate, numericDates:Bool) -> String {
     } else {
         return "Just now"
     }
+}
+
+func getFormettedDate(dateString: String) -> String{
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
+    dateFormatter.timeZone = NSTimeZone(name: "GMT")
     
+    let date = dateFormatter.dateFromString(dateString)
+    if(date != nil){
+        return timeAgoSinceDate(date!, numericDates: true)
+    }
+    
+    return ""
 }

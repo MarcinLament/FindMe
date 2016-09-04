@@ -20,14 +20,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
-        
-        stylePrimaryButton(registerButton, roundedCorners: true)
-        stylePrimaryBackground()
-        
-        usernameView.setStyle(nil, textPlaceholder: "Username", isPassword: false)
-        emailView.setStyle(nil, textPlaceholder: "Email", isPassword: false)
-        passwordView.setStyle(nil, textPlaceholder: "Password", isPassword: true)
-        displayNameView.setStyle(nil, textPlaceholder: "Display name", isPassword: false)
+        initStyles()
     }
 
     @IBAction func cancel(sender: AnyObject) {
@@ -53,11 +46,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         registerNewUser()
     }
     
-    func isInvalidText(text: String) -> Bool{
-        return text.characters.count > 45
-            || text.containsString(" ")
-    }
-    
     func registerNewUser(){
         //create unique user profile
         let userProfile = PFObject(className: "UserProfile")
@@ -65,25 +53,24 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         userProfile["email"] = emailView.getText()
         
         //create new user
-        var user = PFUser()
+        let user = PFUser()
         user.username = usernameView.getText()
         user.password = passwordView.getText()
         user.email = emailView.getText()
         user["userProfile"] = userProfile
         
-        //userProfile["user"] = user
-        
         activityView.startAnimating()
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
+            
             if let error = error {
                 let errorString = error.userInfo["error"] as? String
                 self.showAlert("Cannot register", message: errorString!, completion: nil)
+                self.activityView.stopAnimating()
             } else if(!succeeded){
                 self.showAlert("Cannot register", message: "Internal server error", completion: nil)
-                
+                self.activityView.stopAnimating()
             }else{
-            
                 //login newly created user
                 PFUser.logInWithUsernameInBackground(self.usernameView.getText(), password: self.passwordView.getText()) { (user, error) -> Void in
                     
@@ -93,7 +80,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     } else {
                         PFCloud.callFunctionInBackground("verifyNewUser", withParameters: nil) {
                             (response: AnyObject?, error: NSError?) -> Void in
-                            print(response)
                             
                             //open map screen
                             self.performSegueWithIdentifier("OpenUserAreaSegue", sender: nil)
@@ -102,5 +88,20 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    func isInvalidText(text: String) -> Bool{
+        return text.characters.count > 45
+            || text.containsString(" ")
+    }
+    
+    func initStyles(){
+        stylePrimaryButton(registerButton, roundedCorners: true)
+        stylePrimaryBackground()
+        
+        usernameView.setStyle(nil, textPlaceholder: "Username", isPassword: false)
+        emailView.setStyle(nil, textPlaceholder: "Email", isPassword: false)
+        passwordView.setStyle(nil, textPlaceholder: "Password", isPassword: true)
+        displayNameView.setStyle(nil, textPlaceholder: "Display name", isPassword: false)
     }
 }

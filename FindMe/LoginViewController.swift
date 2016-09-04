@@ -21,7 +21,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
+        initStyles()
+    }
+    
+    func initStyles(){
         stylePrimaryButton(loginButton, roundedCorners: true)
         stylePrimaryBackground()
         
@@ -31,13 +34,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if PFUser.currentUser() != nil {
-            print("User logged in, moving on...")
             openMapViewController()
             return
         }
-        print("User not logged in")
-        
-        
         
         usernameView.hidden = false
         passwordView.hidden = false
@@ -52,6 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             showAlert("Invalid details", message: "Enter your Username and Password", completion: nil)
             return
         }
+        
         activityView.startAnimating()
         PFUser.logInWithUsernameInBackground(usernameView.getText(), password: passwordView.getText()) { (user, error) -> Void in
             self.activityView.stopAnimating()
@@ -62,11 +62,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.showAlert("Error", message: error!.localizedDescription, completion: nil)
             }
         }
-        
     }
 
     @IBAction func register(sender: AnyObject) {
-
         let next = storyboard?.instantiateViewControllerWithIdentifier("RegisterViewController")
         self.presentViewController(next!, animated: true, completion: nil)
     }
@@ -74,7 +72,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func openMapViewController(){
         performSegueWithIdentifier("OpenUserAreaSegue", sender: nil)
     }
-    
-    
 }
 

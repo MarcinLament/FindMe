@@ -15,22 +15,11 @@ class UIInputTextView: UIView{
     var textField: UITextField?
     
     func setStyle(imageName: String?, textPlaceholder: String, isPassword:Bool){
-        setStyle(imageName, textPlaceholder: textPlaceholder, isPassword:isPassword, showBorder: false)
-    }
-    
-    func setStyle(imageName: String?, textPlaceholder: String, isPassword:Bool, showBorder: Bool){
         
         //set rounded background
         backgroundColor = UIColor.whiteColor()
         layer.cornerRadius = 6.0
         clipsToBounds = true
-        
-        let primaryColor = UIColor(red:0.88, green:0.14, blue:0.38, alpha:1.0)
-        
-        if(showBorder){
-            layer.borderWidth = 1
-            layer.borderColor = primaryColor.CGColor
-        }
         
         //add imageView
         if(imageName != nil){
@@ -40,7 +29,7 @@ class UIInputTextView: UIView{
             let imageView = UIImageView()
             imageView.frame = CGRectMake(margin, margin, imageSize, imageSize)
             
-            imageView.backgroundColor = primaryColor
+            imageView.backgroundColor = UIColor.customPinkColor()
             imageView.layer.cornerRadius = 6.0
             imageView.clipsToBounds = true
             imageView.image = img?.imageWithInsets(90)
@@ -83,10 +72,6 @@ class UIInputTextView: UIView{
             self.addSubview(textField!)
             
             textField!.translatesAutoresizingMaskIntoConstraints = false
-//            let horizonalContraints = NSLayoutConstraint(item: textField!, attribute:
-//                .Leading, relatedBy: .Equal, toItem: imageView,
-//                          attribute: .Trailing, multiplier: 1.0,
-//                          constant: 8)
             
             let horizonalContraints = NSLayoutConstraint(item: self, attribute:
                 .Leading, relatedBy: .Equal, toItem: textField,

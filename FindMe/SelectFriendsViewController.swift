@@ -12,13 +12,17 @@ import Parse
 
 class SelectFriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
+    
     var friendsList: [PFObject]?
     var userCurrentLocation: CLLocation?
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     @IBAction func done(sender: AnyObject) {
@@ -38,20 +42,37 @@ class SelectFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         let params: [NSObject : NSObject] = ["latitude": (userCurrentLocation?.coordinate.latitude)!,
                                              "longitude": (userCurrentLocation?.coordinate.longitude)!,
                                              "recipients":recipients]
-
+        shareLocation(params)
+    }
+    
+    func shareLocation(params: [NSObject : NSObject]){
+        activityView.startAnimating()
         PFCloud.callFunctionInBackground("shareLocation", withParameters: params) {
             (response: AnyObject?, error: NSError?) -> Void in
-
+            
+            self.activityView.stopAnimating()
             if(error != nil){
-                print(error)
                 return
             }
-
-            print(response)
+            
+            self.saveLocationToLocalStorage()
+            
             self.showAlert("Great!", message: "You have shared your location successfully!", completion: { (UIAlertAction) in
                 self.dismissViewControllerAnimated(true, completion: nil)
             })
         }
+    }
+    
+    func saveLocationToLocalStorage(){
+        _ = Location(
+            userId: PFUser.currentUser()!.objectId!,
+            date: NSDate(),
+            latitude: (userCurrentLocation?.coordinate.latitude)!,
+            longitude: (userCurrentLocation?.coordinate.longitude)!,
+            context: CoreDataStackManager.sharedInstance().managedObjectContext
+        )
+
+        CoreDataStackManager.sharedInstance().saveContext()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,13 +81,20 @@ class SelectFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("TableCell") as UITableViewCell!
         let displayName = friendsList![indexPath.row]["displayName"] as! String
         cell!.textLabel!.text = displayName
-
+        cell!.textLabel!.textColor = UIColor.whiteColor()
         return cell!
     }
-
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.customPinkDarkColor()
+    }
+
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cellToDeSelect:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        cellToDeSelect.contentView.backgroundColor = UIColor.customPinkColor()
+    }
 }
