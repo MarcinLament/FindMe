@@ -14,9 +14,9 @@
 		202F018E1D55F5BD00B65FC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 202F018D1D55F5BD00B65FC8 /* Assets.xcassets */; };
 		202F01911D55F5BD00B65FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202F018F1D55F5BD00B65FC8 /* LaunchScreen.storyboard */; };
 		20818DB01D7C4374000B25F9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20818DAE1D7C4374000B25F9 /* Model.xcdatamodeld */; };
-		20818DBA1D7C45E8000B25F9 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20818DB91D7C45E8000B25F9 /* CoreDataStackManager.swift */; };
 		20818DC11D7C520D000B25F9 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20818DBF1D7C520D000B25F9 /* Location+CoreDataProperties.swift */; };
 		20818DC21D7C520D000B25F9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20818DC01D7C520D000B25F9 /* Location.swift */; };
+		20818DCB1D7C843F000B25F9 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20818DCA1D7C843F000B25F9 /* CoreDataStackManager.swift */; };
 		20844A491D55FC9600309A02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A481D55FC9600309A02 /* RegisterViewController.swift */; };
 		20844A4B1D5620B200309A02 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A4A1D5620B200309A02 /* UIViewController.swift */; };
 		20844A4D1D5630CE00309A02 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20844A4C1D5630CE00309A02 /* MapViewController.swift */; };
@@ -42,9 +42,9 @@
 		202F01901D55F5BD00B65FC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		202F01921D55F5BD00B65FC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20818DAF1D7C4374000B25F9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		20818DB91D7C45E8000B25F9 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStackManager.swift; path = ../../../../Downloads/CoreDataStackManager.swift; sourceTree = "<group>"; };
 		20818DBF1D7C520D000B25F9 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		20818DC01D7C520D000B25F9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../Location.swift; sourceTree = "<group>"; };
+		20818DCA1D7C843F000B25F9 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		20844A481D55FC9600309A02 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		20844A4A1D5620B200309A02 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		20844A4C1D5630CE00309A02 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			children = (
 				20D7D9D21D762FB7003F2995 /* TimeAgo.swift */,
 				20D7D9D41D774F86003F2995 /* AvatarGenerator.swift */,
-				20818DB91D7C45E8000B25F9 /* CoreDataStackManager.swift */,
+				20818DCA1D7C843F000B25F9 /* CoreDataStackManager.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -321,9 +321,9 @@
 				20DFA1051D592CC7009C1357 /* UserData.swift in Sources */,
 				202F01891D55F5BD00B65FC8 /* LoginViewController.swift in Sources */,
 				20DFA1071D592CE9009C1357 /* FriendListViewController.swift in Sources */,
-				20818DBA1D7C45E8000B25F9 /* CoreDataStackManager.swift in Sources */,
 				20818DC11D7C520D000B25F9 /* Location+CoreDataProperties.swift in Sources */,
 				20D7D9D31D762FB7003F2995 /* TimeAgo.swift in Sources */,
+				20818DCB1D7C843F000B25F9 /* CoreDataStackManager.swift in Sources */,
 				20844A4B1D5620B200309A02 /* UIViewController.swift in Sources */,
 				20D7D9D71D789C92003F2995 /* UIImage.swift in Sources */,
 				20844A4D1D5630CE00309A02 /* MapViewController.swift in Sources */,
