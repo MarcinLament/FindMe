@@ -12,6 +12,9 @@ import UIKit
 extension UIViewController{
     
     public func showAlert(title: String, message: String, completion: ((UIAlertAction) -> Void)?){
+        if(view.window == nil){
+            return
+        }
         let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: completion))
         presentViewController(ac, animated: true, completion: nil)

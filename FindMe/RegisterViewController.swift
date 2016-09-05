@@ -21,6 +21,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         initStyles()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.handleSingleTap(_:)))
+        self.view.addGestureRecognizer(gesture)
     }
 
     @IBAction func cancel(sender: AnyObject) {
@@ -88,6 +91,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     func isInvalidText(text: String) -> Bool{

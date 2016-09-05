@@ -105,6 +105,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             if(error != nil){
                 self.shareLocationActivityView.stopAnimating()
                 self.shareLocationButton.hidden = false
+                self.showAlert("Error", message: (error?.localizedDescription)!, completion: nil)
                 return
             }
             
@@ -130,25 +131,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     func downloadFriendsLocation(){
         self.friendInfoActivityView.startAnimating()
+        statusLabel.hidden = true
         PFCloud.callFunctionInBackground("getFriendsLocations", withParameters: nil) {
             (response: AnyObject?, error: NSError?) -> Void in
             
             self.friendInfoActivityView.stopAnimating()
+            self.statusLabel.hidden = false
             
             if(error != nil){
-                return;
+                self.showAlert("Error", message: (error?.localizedDescription)!, completion: nil)
+                self.updateFriendsLocationButtonText(nil)
+            }else{
+                
+                var friendLocationData: FriendLocationData?
+                if let data = response!.dataUsingEncoding(NSUTF8StringEncoding) {
+                    do {
+                        let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+                        friendLocationData = FriendLocationData(jsonObject: rootObject!)
+                    } catch{}
+                }
+                
+                self.updateFriendsLocationButtonText(friendLocationData)
+                self.showFriendsOnMap((friendLocationData?.friendLocationList)!)
             }
-            
-            var friendLocationData: FriendLocationData?
-            if let data = response!.dataUsingEncoding(NSUTF8StringEncoding) {
-                do {
-                    let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
-                    friendLocationData = FriendLocationData(jsonObject: rootObject!)
-                } catch{}
-            }
-            
-            self.showFriendsLocations(friendLocationData)
-            self.showFriendsOnMap((friendLocationData?.friendLocationList)!)
         }
     }
     
@@ -175,7 +180,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         shareLocationButton.setAttributedTitle(text1, forState: .Normal)
     }
     
-    func showFriendsLocations(friendLocationData: FriendLocationData?){
+    func updateFriendsLocationButtonText(friendLocationData: FriendLocationData?){
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.Center

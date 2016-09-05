@@ -52,14 +52,14 @@ class SelectFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             
             self.activityView.stopAnimating()
             if(error != nil){
-                return
+                self.showAlert("Error", message: (error?.localizedDescription)!, completion: nil)
+            }else{
+                
+                self.saveLocationToLocalStorage()
+                self.showAlert("Great!", message: "You have shared your location successfully!", completion: { (UIAlertAction) in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
             }
-            
-            self.saveLocationToLocalStorage()
-            
-            self.showAlert("Great!", message: "You have shared your location successfully!", completion: { (UIAlertAction) in
-                self.dismissViewControllerAnimated(true, completion: nil)
-            })
         }
     }
     

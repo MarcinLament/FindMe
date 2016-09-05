@@ -56,7 +56,12 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
                                             "friendRequestId":friendRequest.objectId!]
         PFCloud.callFunctionInBackground("acceptFriendRequest", withParameters: params) {
             (response: AnyObject?, error: NSError?) -> Void in
-            self.downloadUserFriendList()
+            
+            if(error != nil){
+                self.showAlert("Error", message: (error?.localizedDescription)!, completion: nil)
+            }else{
+                self.downloadUserFriendList()
+            }
         }
     }
     
@@ -64,7 +69,12 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         let params: [NSObject : NSObject] = ["friendRequestId":friendRequest.objectId!]
         PFCloud.callFunctionInBackground("declineFriendRequest", withParameters: params) {
             (response: AnyObject?, error: NSError?) -> Void in
-            self.downloadUserFriendList()
+            
+            if(error != nil){
+                self.showAlert("Error", message: (error?.localizedDescription)!, completion: nil)
+            }else{
+                self.downloadUserFriendList()
+            }
         }
     }
     
@@ -77,7 +87,9 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
             (response: AnyObject?, error: NSError?) -> Void in
             
             self.activityView.stopAnimating()
-            if(error == nil){
+            if(error != nil){
+                self.showAlert("Error", message: (error?.localizedDescription)!, completion: nil)
+            }else{
                 self.emailView.textField?.text = ""
             }
             
@@ -90,14 +102,24 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        let title: String?
+        
+        var title: String?
         switch section {
         case 0:
-            title = userData?.friendRequestList.count == 0 ? nil : "Awaiting your action"
+            if(userData?.friendRequestList.count == 0){
+                title = "Awaiting your action"
+            }
+            break;
         case 1:
-            title = userData?.sentInvitesList.count == 0 ? nil : "Sent requests"
+            if(userData?.sentInvitesList.count == 0){
+                title = "Sent requests"
+            }
+            break;
         case 2:
-            title = userData?.friendsList.count == 0 ? nil : "Friends"
+            if(userData?.friendsList.count == 0){
+                title = "Friends"
+            }
+            break;
         default:
             return nil
         }

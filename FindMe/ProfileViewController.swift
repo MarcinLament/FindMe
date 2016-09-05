@@ -41,25 +41,30 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             (userProfile: PFObject?, error: NSError?) -> Void in
             
             self.activityView.stopAnimating()
-            self.userDisplayNameView.hidden = false
-            self.profileImageView.hidden = false
             
-            let userName = userProfile!["displayName"] as! String
-            
-            self.userDisplayNameView.text = "Hello, " + userName
-            
-            AvatarGenerator.getAvatar(userName, imageView: self.profileImageView)
-            
-            let userId = PFUser.currentUser()!.objectId!
-            
-            Location.fetchAllLocations(userId, completionHandler: { (fetchError, fetchedLocations) in
-                if fetchError != nil{
-                    self.showAlert("Error", message: "Error fetching data from local storage", completion: nil)
-                }else{
-                    self.fetchedLocations = fetchedLocations
-                    self.tableView.reloadData()
-                }
-            })
+            if(error != nil){
+                self.showAlert("Error", message: (error?.localizedDescription)!, completion: nil)
+            }else{
+                self.userDisplayNameView.hidden = false
+                self.profileImageView.hidden = false
+                
+                let userName = userProfile!["displayName"] as! String
+                
+                self.userDisplayNameView.text = "Hello, " + userName
+                
+                AvatarGenerator.getAvatar(userName, imageView: self.profileImageView)
+                
+                let userId = PFUser.currentUser()!.objectId!
+                
+                Location.fetchAllLocations(userId, completionHandler: { (fetchError, fetchedLocations) in
+                    if fetchError != nil{
+                        self.showAlert("Error", message: "Error fetching data from local storage", completion: nil)
+                    }else{
+                        self.fetchedLocations = fetchedLocations
+                        self.tableView.reloadData()
+                    }
+                })
+            }
         }
     }
     
